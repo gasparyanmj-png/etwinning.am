@@ -1,0 +1,2562 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eTwinning Հայաստան — Եվրոպական դպրոցների համայնք</title>
+<meta name="description" content="eTwinning Հայաստան — Եվրոպայի դպրոցների ուսուցիչների և աշակերտների ամենամեծ համայնքը. համատեղ նախագծեր, մասնագիտական զարգացում, միջազգային փորձ։">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Armenian:wght@400;500;600;700;800&family=Noto+Sans+Armenian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* ===== Official eTwinning brand palette ===== */
+    --navy: #1B1F4A;            /* deep navy — main text & dark sections */
+    --navy-deep: #131638;       /* darker navy */
+    --navy-light: #2C336B;      /* lighter navy */
+    --gold: #F18A2F;            /* eTwinning ORANGE — primary brand accent */
+    --gold-soft: #F9B97A;       /* soft orange */
+    --gold-deep: #D96E15;       /* deep orange */
+    --cream: #FFFBF4;           /* off-white background */
+    --cream-dark: #FFF2DE;      /* warm light cream */
+    --terracotta: #E97570;      /* coral (eTwinning secondary) */
+    --sage: #3DA8B5;            /* teal (eTwinning secondary) */
+    --purple: #9B95C9;          /* purple (eTwinning secondary) */
+    --yellow: #F5DC5C;          /* yellow accent */
+    --ink: #1B1F4A;             /* dark navy for text */
+    --ink-soft: #4A4D70;        /* softer text */
+    --line: rgba(27, 31, 74, 0.12);
+    --shadow-sm: 0 2px 8px rgba(27, 31, 74, 0.06);
+    --shadow-md: 0 8px 24px rgba(27, 31, 74, 0.10);
+    --shadow-lg: 0 20px 60px rgba(27, 31, 74, 0.15);
+    --display: 'Noto Serif Armenian', Georgia, serif;
+    --body: 'Noto Sans Armenian', system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--body);
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--gold); color: var(--navy); }
+
+  /* ====== BRAND PARTNERS STRIP ====== */
+  .brand-strip {
+    background: var(--cream);
+    padding: 2.5rem 2rem;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .brand-strip-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .brand-strip-label {
+    text-align: center;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 1.75rem;
+    font-weight: 600;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .brand-strip-label::before,
+  .brand-strip-label::after {
+    content: '';
+    height: 1px;
+    background: var(--line);
+    flex: 1;
+    max-width: 80px;
+  }
+  .brand-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .brand-logo {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    opacity: 0.85;
+  }
+  .brand-logo:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+  .brand-logo svg {
+    height: 100%;
+    width: auto;
+    max-width: 200px;
+  }
+  @media (max-width: 880px) {
+    .brand-logos { gap: 1.5rem; }
+    .brand-logo { height: 44px; }
+    .brand-strip { padding: 2rem 1.25rem; }
+  }
+
+  /* ====== TOP BAR ====== */
+  .topbar {
+    background: var(--navy-deep);
+    color: var(--cream);
+    font-size: 0.82rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(212, 169, 70, 0.2);
+  }
+  .topbar-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .topbar a {
+    color: var(--cream);
+    text-decoration: none;
+    margin-left: 1.25rem;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+  }
+  .topbar a:hover { opacity: 1; color: var(--gold-soft); }
+  .topbar-eu { display: flex; align-items: center; gap: 0.5rem; }
+  .eu-flag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 15px;
+    background: #003399;
+    border-radius: 2px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .eu-flag svg { width: 100%; height: 100%; }
+
+  /* ====== HEADER / NAV ====== */
+  header.main {
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    background: rgba(250, 246, 237, 0.95);
+  }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--navy);
+  }
+  .logo-mark {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-mark svg {
+    width: 100%;
+    height: 100%;
+  }
+  .logo-text {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.35rem;
+    line-height: 1;
+  }
+  .logo-text small {
+    display: block;
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  nav.primary {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  nav.primary a {
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 0.3rem 0;
+    transition: color 0.2s;
+  }
+  nav.primary a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+  nav.primary a:hover { color: var(--gold-deep); }
+  nav.primary a:hover::after { width: 100%; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--navy);
+    color: var(--cream);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-family: var(--body);
+  }
+  .btn:hover {
+    background: var(--navy-deep);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .btn-gold:hover { background: var(--gold-deep); color: var(--cream); }
+  .btn-outline {
+    background: transparent;
+    border: 2px solid var(--navy);
+    color: var(--navy);
+  }
+  .btn-outline:hover { background: var(--navy); color: var(--cream); }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--navy);
+    margin: 5px 0;
+    transition: 0.3s;
+  }
+
+  /* ====== HERO ====== */
+  .hero {
+    position: relative;
+    background: var(--navy);
+    color: var(--cream);
+    padding: 6rem 2rem 7rem;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 15% 30%, rgba(212, 169, 70, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 85% 70%, rgba(200, 75, 49, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  /* Decorative geometric pattern (inspired by Armenian khachkar geometry) */
+  .hero-pattern {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45%;
+    height: 100%;
+    opacity: 0.07;
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1rem;
+    background: rgba(212, 169, 70, 0.15);
+    border: 1px solid rgba(212, 169, 70, 0.4);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    color: var(--gold-soft);
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--gold);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 .gold { color: var(--gold); font-style: italic; }
+  .hero h1 .underline {
+    position: relative;
+    display: inline-block;
+  }
+  .hero h1 .underline::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: var(--gold);
+    opacity: 0.35;
+    z-index: -1;
+  }
+  .hero p.lead {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: rgba(250, 246, 237, 0.85);
+    margin-bottom: 2.5rem;
+    max-width: 560px;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .hero-cta .btn { padding: 1rem 2rem; }
+
+  /* Hero visual — illustrated map of europe with armenia */
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 480px;
+    margin-left: auto;
+  }
+  .hero-visual svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 20px 60px rgba(0,0,0,0.4));
+  }
+  .float-card {
+    position: absolute;
+    background: var(--cream);
+    color: var(--navy);
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    font-size: 0.85rem;
+    animation: float 6s ease-in-out infinite;
+  }
+  .float-card strong {
+    display: block;
+    font-family: var(--display);
+    font-size: 1.5rem;
+    color: var(--navy);
+  }
+  .float-card.fc-1 { top: 10%; left: -10%; animation-delay: 0s; }
+  .float-card.fc-2 { bottom: 15%; right: -5%; animation-delay: -2s; }
+  .float-card.fc-3 { top: 50%; left: -15%; animation-delay: -4s; }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* ====== STATS BAR ====== */
+  .stats-bar {
+    background: var(--cream-dark);
+    padding: 3rem 2rem;
+    border-top: 4px solid var(--gold);
+  }
+  .stats-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+  .stat-item {
+    border-right: 1px solid var(--line);
+    padding: 0 1rem;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-number {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .stat-number .plus { color: var(--gold-deep); }
+  .stat-label {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ====== SECTION BASE ====== */
+  section { padding: 6rem 2rem; }
+  .section-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .section-label {
+    display: inline-block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold-deep);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    position: relative;
+    padding-left: 2.5rem;
+  }
+  .section-label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 2rem;
+    height: 2px;
+    background: var(--gold);
+  }
+  .section-title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+  }
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    max-width: 720px;
+    line-height: 1.7;
+  }
+
+  /* ====== ABOUT SECTION ====== */
+  .about {
+    background: var(--cream);
+    position: relative;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .about-text p {
+    margin-bottom: 1.2rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+  }
+  .about-text p strong { color: var(--navy); font-weight: 600; }
+  .about-visual {
+    position: relative;
+    aspect-ratio: 4/5;
+  }
+  .about-visual .img-block {
+    position: absolute;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .img-1 {
+    top: 0;
+    left: 0;
+    width: 65%;
+    height: 70%;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .img-2 {
+    bottom: 0;
+    right: 0;
+    width: 60%;
+    height: 55%;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+    border: 6px solid var(--cream);
+  }
+  .img-block svg { width: 60%; height: 60%; }
+
+  /* ====== WHAT WE OFFER ====== */
+  .offer {
+    background: var(--navy-deep);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .offer::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 169, 70, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .offer .section-title { color: var(--cream); }
+  .offer .section-intro { color: rgba(250, 246, 237, 0.75); }
+  .offer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .offer-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(212, 169, 70, 0.2);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .offer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .offer-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+    border-color: var(--gold);
+  }
+  .offer-card:hover::before { transform: scaleX(1); }
+  .offer-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(212, 169, 70, 0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: var(--gold);
+  }
+  .offer-card h3 {
+    font-family: var(--display);
+    font-size: 1.35rem;
+    margin-bottom: 0.8rem;
+    color: var(--cream);
+  }
+  .offer-card p {
+    color: rgba(250, 246, 237, 0.75);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  .offer-card a.learn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.2rem;
+    color: var(--gold-soft);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: gap 0.2s;
+  }
+  .offer-card a.learn:hover { gap: 0.7rem; color: var(--gold); }
+
+  /* ====== HOW IT WORKS ====== */
+  .how {
+    background: var(--cream);
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 8%;
+    right: 8%;
+    height: 2px;
+    background: repeating-linear-gradient(to right, var(--gold) 0, var(--gold) 8px, transparent 8px, transparent 16px);
+    z-index: 0;
+  }
+  .step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 60px;
+    height: 60px;
+    background: var(--cream);
+    border: 2px solid var(--navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--navy);
+    transition: all 0.3s;
+  }
+  .step:hover .step-num {
+    background: var(--navy);
+    color: var(--gold);
+    transform: scale(1.1);
+  }
+  .step h4 {
+    font-family: var(--display);
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+    color: var(--navy);
+  }
+  .step p {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* ====== PROJECTS / FEATURED ====== */
+  .projects {
+    background: var(--cream-dark);
+  }
+  .projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .project-card {
+    background: var(--cream);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+  .project-img {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-img.p1 { background: linear-gradient(135deg, #1a3a5c 0%, #0a2540 100%); }
+  .project-img.p2 { background: linear-gradient(135deg, #c84b31 0%, #8a3520 100%); }
+  .project-img.p3 { background: linear-gradient(135deg, #6b8e6f 0%, #4a6a4d 100%); }
+  .project-img svg {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 180px;
+    height: 180px;
+    opacity: 0.25;
+  }
+  .project-img .tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .project-content {
+    padding: 1.75rem;
+  }
+  .project-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .project-content h3 {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+  .project-content p {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .project-content .meta-bot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.85rem;
+  }
+  .meta-bot .countries { color: var(--ink-soft); }
+  .meta-bot .countries strong { color: var(--navy); }
+
+  /* ====== NEWS / EVENTS ====== */
+  .news {
+    background: var(--cream);
+  }
+  .news-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+  .news-main {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 3rem;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  .news-main::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(212, 169, 70, 0.2) 0%, transparent 70%);
+  }
+  .news-date {
+    font-size: 0.85rem;
+    color: var(--gold-soft);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .news-main h3 {
+    font-family: var(--display);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .news-main p {
+    color: rgba(250, 246, 237, 0.8);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+  .news-side {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .news-item {
+    background: var(--cream-dark);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--gold);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .news-item:hover {
+    transform: translateX(4px);
+    background: var(--cream);
+    box-shadow: var(--shadow-md);
+  }
+  .news-item .news-date { color: var(--gold-deep); margin-bottom: 0.5rem; }
+  .news-item h4 {
+    font-family: var(--display);
+    font-size: 1.1rem;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+
+  /* ====== TESTIMONIAL ====== */
+  .testimonial {
+    background: var(--cream-dark);
+    text-align: center;
+    padding: 7rem 2rem;
+    position: relative;
+  }
+  .testimonial-quote {
+    font-family: var(--display);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-style: italic;
+    color: var(--navy);
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    line-height: 1.4;
+    position: relative;
+  }
+  .testimonial-quote::before {
+    content: '"';
+    font-size: 8rem;
+    color: var(--gold);
+    position: absolute;
+    top: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+  .testimonial-author {
+    margin-top: 2rem;
+  }
+  .testimonial-author strong {
+    font-family: var(--display);
+    color: var(--navy);
+    font-size: 1.1rem;
+    display: block;
+  }
+  .testimonial-author span {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+
+  /* ====== SUPPORTER / ԿՏԱԿ SECTION ====== */
+  .supporter {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 7rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .supporter::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 30%, rgba(212, 169, 70, 0.12) 0%, transparent 45%),
+      radial-gradient(circle at 85% 70%, rgba(200, 75, 49, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .supporter::after {
+    content: '';
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    width: 200px;
+    height: 200px;
+    background-image:
+      radial-gradient(circle, var(--gold) 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+  .supporter-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .supporter-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .supporter-content .section-label {
+    color: var(--gold-soft);
+  }
+  .supporter-content .section-label::before {
+    background: var(--gold);
+  }
+  .supporter-content h2.section-title {
+    color: var(--cream);
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  .supporter-content h2.section-title .gold {
+    color: var(--gold-soft);
+  }
+  .supporter-content > p {
+    color: rgba(250, 246, 237, 0.78);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+  .supporter-hierarchy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(212, 169, 70, 0.25);
+  }
+  .hierarchy-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.95rem;
+    color: rgba(250, 246, 237, 0.85);
+  }
+  .hierarchy-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(212, 169, 70, 0.12);
+    border: 1px solid rgba(212, 169, 70, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: var(--display);
+    font-weight: 700;
+    color: var(--gold-soft);
+    font-size: 0.85rem;
+  }
+  .hierarchy-item strong {
+    color: var(--cream);
+    font-weight: 600;
+  }
+
+  /* The institutional card on the right */
+  .supporter-card {
+    background: linear-gradient(160deg, rgba(212, 169, 70, 0.08) 0%, rgba(26, 58, 92, 0.4) 100%);
+    border: 1px solid rgba(212, 169, 70, 0.3);
+    padding: 3rem 2.5rem;
+    position: relative;
+    text-align: center;
+  }
+  .supporter-card::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .supporter-card::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: -1px; right: -1px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .card-corner {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-color: var(--gold);
+    border-style: solid;
+    border-width: 0;
+  }
+  .card-corner.tl { top: 12px; left: 12px; border-top-width: 1.5px; border-left-width: 1.5px; }
+  .card-corner.tr { top: 12px; right: 12px; border-top-width: 1.5px; border-right-width: 1.5px; }
+  .card-corner.bl { bottom: 12px; left: 12px; border-bottom-width: 1.5px; border-left-width: 1.5px; }
+  .card-corner.br { bottom: 12px; right: 12px; border-bottom-width: 1.5px; border-right-width: 1.5px; }
+
+  .card-emblem {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    position: relative;
+  }
+  .card-emblem svg {
+    width: 100%;
+    height: 100%;
+  }
+  .card-acronym {
+    font-family: var(--display);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+  .card-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 1.25rem auto;
+    opacity: 0.6;
+  }
+  .card-fullname {
+    font-family: var(--display);
+    font-size: 1.05rem;
+    color: var(--cream);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+  .card-fullname-label {
+    font-size: 0.72rem;
+    color: rgba(250, 246, 237, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+  .card-role {
+    background: rgba(212, 169, 70, 0.12);
+    border: 1px solid rgba(212, 169, 70, 0.3);
+    padding: 0.85rem 1.25rem;
+    margin-top: 1.5rem;
+    color: var(--gold-soft);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .card-parent {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(212, 169, 70, 0.2);
+    font-size: 0.85rem;
+    color: rgba(250, 246, 237, 0.7);
+  }
+  .card-parent strong {
+    display: block;
+    color: var(--cream);
+    margin-top: 0.3rem;
+    font-family: var(--display);
+    font-size: 0.95rem;
+  }
+  @media (max-width: 880px) {
+    .supporter { padding: 4.5rem 1.25rem; }
+    .supporter-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .supporter-card { padding: 2.5rem 1.75rem; }
+  }
+
+  /* ====== FAQ SECTION ====== */
+  .faq {
+    background: var(--cream);
+    padding: 7rem 2rem;
+    position: relative;
+  }
+  .faq::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .faq-inner {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .faq-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .faq-header .section-label {
+    justify-content: center;
+  }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    transition: background 0.3s ease;
+  }
+  .faq-item:hover {
+    background: rgba(212, 169, 70, 0.04);
+  }
+  .faq-question {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 100%;
+    padding: 1.75rem 1.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--display);
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.35;
+    transition: color 0.2s ease;
+  }
+  .faq-question:hover {
+    color: var(--gold-deep);
+  }
+  .faq-question .q-num {
+    flex-shrink: 0;
+    font-family: var(--display);
+    font-size: 0.75rem;
+    color: var(--gold-deep);
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    padding-top: 0.4rem;
+    min-width: 2.5rem;
+  }
+  .faq-question .q-text {
+    flex: 1;
+  }
+  .faq-toggle {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1.5px solid var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    margin-top: 0.2rem;
+  }
+  .faq-toggle::before,
+  .faq-toggle::after {
+    content: '';
+    position: absolute;
+    background: var(--navy);
+    transition: all 0.3s ease;
+  }
+  .faq-toggle::before {
+    width: 12px;
+    height: 1.5px;
+  }
+  .faq-toggle::after {
+    width: 1.5px;
+    height: 12px;
+  }
+  .faq-item.open .faq-toggle {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: rotate(180deg);
+  }
+  .faq-item.open .faq-toggle::after {
+    height: 0;
+  }
+  .faq-item.open .faq-toggle::before {
+    background: var(--navy);
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .faq-answer-inner {
+    padding: 0 1.5rem 2rem calc(2.5rem + 1.5rem);
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+  .faq-answer-inner p {
+    margin-bottom: 0.85rem;
+  }
+  .faq-answer-inner p:last-child {
+    margin-bottom: 0;
+  }
+  .faq-answer-inner ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 1rem 0;
+  }
+  .faq-answer-inner ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+  .faq-answer-inner ul li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+  }
+  .faq-answer-inner a {
+    color: var(--gold-deep);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .faq-answer-inner a:hover {
+    color: var(--terracotta);
+  }
+  .faq-answer-inner strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 2000px;
+  }
+  .faq-cta {
+    text-align: center;
+    margin-top: 3.5rem;
+    padding: 2.5rem;
+    background: var(--cream-dark);
+    border: 1px solid var(--line);
+  }
+  .faq-cta p {
+    color: var(--ink-soft);
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+  }
+  .faq-cta strong {
+    color: var(--navy);
+    font-family: var(--display);
+    font-size: 1.15rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  @media (max-width: 640px) {
+    .faq { padding: 4rem 1.25rem; }
+    .faq-question { padding: 1.25rem 0.5rem; gap: 1rem; }
+    .faq-question .q-num { min-width: 2rem; font-size: 0.7rem; }
+    .faq-answer-inner { padding: 0 0.5rem 1.5rem calc(2rem + 0.5rem); }
+  }
+
+  /* ====== CTA SECTION ====== */
+  .cta {
+    background: var(--navy);
+    color: var(--cream);
+    text-align: center;
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(212, 169, 70, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(200, 75, 49, 0.1) 0%, transparent 50%);
+  }
+  .cta-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .cta h2 {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  .cta h2 .gold { color: var(--gold); }
+  .cta p {
+    font-size: 1.15rem;
+    color: rgba(250, 246, 237, 0.85);
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+  .cta-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ====== FOOTER ====== */
+  footer {
+    background: var(--navy-deep);
+    color: var(--cream);
+    padding: 5rem 2rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(212, 169, 70, 0.2);
+  }
+  .footer-brand .logo-text { color: var(--cream); }
+  .footer-brand .logo-text small { color: var(--gold-soft); }
+  .footer-brand p {
+    margin-top: 1.5rem;
+    color: rgba(250, 246, 237, 0.7);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    max-width: 320px;
+  }
+  .footer-col h5 {
+    font-family: var(--display);
+    color: var(--gold);
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.02em;
+  }
+  .footer-col ul {
+    list-style: none;
+  }
+  .footer-col ul li {
+    margin-bottom: 0.7rem;
+  }
+  .footer-col ul a {
+    color: rgba(250, 246, 237, 0.75);
+    text-decoration: none;
+    font-size: 0.92rem;
+    transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--gold-soft); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+    color: rgba(250, 246, 237, 0.6);
+  }
+  .footer-bottom a { color: var(--gold-soft); text-decoration: none; }
+
+  /* EU funding disclaimer (mandatory for EU programs) */
+  .eu-disclaimer {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.75rem 0;
+    margin-bottom: 1.5rem;
+    border-top: 1px solid rgba(212, 169, 70, 0.2);
+    border-bottom: 1px solid rgba(212, 169, 70, 0.2);
+  }
+  .eu-disclaimer-flag {
+    width: 84px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .eu-disclaimer-flag svg { width: 100%; height: 100%; display: block; }
+  .eu-disclaimer-text strong {
+    display: block;
+    color: var(--cream);
+    font-family: var(--display);
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+  .eu-disclaimer-text p {
+    color: rgba(250, 246, 237, 0.6);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 800px;
+  }
+  @media (max-width: 600px) {
+    .eu-disclaimer { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  }
+  .footer-socials {
+    display: flex;
+    gap: 0.8rem;
+  }
+  .footer-socials a {
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cream);
+    transition: all 0.2s;
+  }
+  .footer-socials a:hover {
+    background: var(--gold);
+    color: var(--navy);
+    transform: translateY(-2px);
+  }
+
+  /* ====== RESPONSIVE ====== */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { margin: 2rem auto 0; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+    .stat-item:nth-child(2) { border-right: none; }
+    .stat-item { padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+    .stat-item:nth-last-child(-n+2) { border-bottom: none; padding-bottom: 0; }
+    .offer-grid { grid-template-columns: repeat(2, 1fr); }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    .news-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .steps::before { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 700px) {
+    nav.primary { display: none; }
+    nav.primary.open {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: var(--cream);
+      padding: 1.5rem 2rem;
+      gap: 1.2rem;
+      box-shadow: var(--shadow-md);
+      border-top: 1px solid var(--line);
+    }
+    .menu-toggle { display: block; }
+    .nav-cta { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 4rem 1.5rem 5rem; }
+    .offer-grid, .projects-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: 1fr; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--line); padding-bottom: 1.5rem; }
+    .topbar-inner { font-size: 0.75rem; }
+    .topbar a { margin-left: 0.75rem; }
+    .float-card { display: none; }
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-eu">
+      <span class="eu-flag" aria-label="EU">
+        <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="40" fill="#003399"/>
+          <g fill="#FFCC00">
+            <!-- 12 stars in a circle -->
+            <g transform="translate(30 20)">
+              <g transform="translate(0 -12)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+              <g transform="translate(6 -10.4)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+              <g transform="translate(10.4 -6)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+              <g transform="translate(12 0)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+              <g transform="translate(10.4 6)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+              <g transform="translate(6 10.4)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+              <g transform="translate(0 12)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+              <g transform="translate(-6 10.4)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+              <g transform="translate(-10.4 6)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+              <g transform="translate(-12 0)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+              <g transform="translate(-10.4 -6)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+              <g transform="translate(-6 -10.4)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            </g>
+          </g>
+        </svg>
+      </span>
+      <span>Համաֆինանսավորվում է Եվրոպական միության կողմից · Erasmus+</span>
+    </div>
+    <div>
+      <a href="#">ՀՀ ԿԳՄՍ</a>
+      <a href="#">Eng</a>
+      <a href="#">Հայ</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="main">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <!-- eTwinning-style figure with stars -->
+          <!-- Stars/sparkles around -->
+          <path d="M14 18 L15.5 21 L18.5 22.5 L15.5 24 L14 27 L12.5 24 L9.5 22.5 L12.5 21 Z" fill="#F18A2F"/>
+          <path d="M50 14 L51 16 L53 17 L51 18 L50 20 L49 18 L47 17 L49 16 Z" fill="#F18A2F"/>
+          <path d="M52 32 L53 34 L55 35 L53 36 L52 38 L51 36 L49 35 L51 34 Z" fill="#F5DC5C"/>
+          <path d="M10 38 L11 40 L13 41 L11 42 L10 44 L9 42 L7 41 L9 40 Z" fill="#F5DC5C"/>
+          <!-- Figure (stylized person with arms up) -->
+          <!-- Head -->
+          <circle cx="32" cy="22" r="6" fill="#1B1F4A"/>
+          <!-- Body / arms reaching up -->
+          <path d="M32 28
+                   C26 28 22 32 22 38
+                   L22 50 L26 50 L26 42
+                   L28 42 L28 54 L36 54 L36 42
+                   L38 42 L38 50 L42 50 L42 38
+                   C42 32 38 28 32 28 Z"
+                fill="#1B1F4A"/>
+          <!-- Arms raised (stylized) -->
+          <path d="M22 38 C20 34 18 28 18 22" stroke="#1B1F4A" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M42 38 C44 34 46 28 46 22" stroke="#1B1F4A" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <!-- Star in hand left -->
+          <path d="M18 22 L19 19 L22 18 L19 17 L18 14 L17 17 L14 18 L17 19 Z" fill="#F18A2F"/>
+          <!-- Star in hand right -->
+          <path d="M46 22 L47 19 L50 18 L47 17 L46 14 L45 17 L42 18 L45 19 Z" fill="#F18A2F"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        eTwinning
+        <small>Հայաստան</small>
+      </div>
+    </a>
+    <nav class="primary" id="primaryNav">
+      <a href="#about">Մեր մասին</a>
+      <a href="#offer">Հնարավորություններ</a>
+      <a href="#how">Ինչպես միանալ</a>
+      <a href="#projects">Նախագծեր</a>
+      <a href="#news">Նորություններ</a>
+      <a href="#faq">ՀՏՀ</a>
+      <a href="#contact">Կապ</a>
+    </nav>
+    <a href="#join" class="btn btn-gold nav-cta">Գրանցվել</a>
+    <button class="menu-toggle" onclick="document.getElementById('primaryNav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-pattern" viewBox="0 0 400 400" preserveAspectRatio="xMaxYMid slice">
+    <defs>
+      <pattern id="khachkar" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+        <circle cx="40" cy="40" r="30" fill="none" stroke="#d4a946" stroke-width="1"/>
+        <path d="M40 10 L40 70 M10 40 L70 40" stroke="#d4a946" stroke-width="1"/>
+        <circle cx="40" cy="40" r="6" fill="#d4a946"/>
+        <path d="M25 25 Q40 15 55 25 M25 55 Q40 65 55 55" stroke="#d4a946" stroke-width="1" fill="none"/>
+      </pattern>
+    </defs>
+    <rect width="400" height="400" fill="url(#khachkar)"/>
+  </svg>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Եվրոպայի ամենամեծ դպրոցական համայնքը</div>
+      <h1>
+        Միացրու քո դասարանը <span class="underline"><span class="gold">Եվրոպային</span></span> մեկ սեղմումով
+      </h1>
+      <p class="lead">
+        eTwinning Հայաստանը հնարավորություն է տալիս հայ ուսուցիչներին և աշակերտներին համատեղ նախագծերի միջոցով համագործակցել Եվրոպայի 40+ երկրների դպրոցների հետ՝ զարգացնելով թվային հմտություններ, լեզուներ և միջմշակութային երկխոսություն։
+      </p>
+      <div class="hero-cta">
+        <a href="#join" class="btn btn-gold">Միանալ համայնքին →</a>
+        <a href="#about" class="btn btn-outline" style="border-color: var(--gold-soft); color: var(--gold-soft);">Իմանալ ավելին</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- Decorative connected globe / armenia -->
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="globeGrad" cx="40%" cy="40%">
+            <stop offset="0%" stop-color="#1a3a5c"/>
+            <stop offset="100%" stop-color="#051630"/>
+          </radialGradient>
+        </defs>
+        <!-- outer ring -->
+        <circle cx="200" cy="200" r="180" fill="none" stroke="#d4a946" stroke-width="1" stroke-dasharray="4 6" opacity="0.4"/>
+        <circle cx="200" cy="200" r="160" fill="url(#globeGrad)" stroke="#d4a946" stroke-width="2"/>
+        <!-- meridians -->
+        <ellipse cx="200" cy="200" rx="160" ry="50" fill="none" stroke="#d4a946" stroke-width="1" opacity="0.3"/>
+        <ellipse cx="200" cy="200" rx="160" ry="100" fill="none" stroke="#d4a946" stroke-width="1" opacity="0.3"/>
+        <ellipse cx="200" cy="200" rx="80" ry="160" fill="none" stroke="#d4a946" stroke-width="1" opacity="0.3"/>
+        <ellipse cx="200" cy="200" rx="130" ry="160" fill="none" stroke="#d4a946" stroke-width="1" opacity="0.3"/>
+        <line x1="40" y1="200" x2="360" y2="200" stroke="#d4a946" stroke-width="1" opacity="0.3"/>
+        <!-- connection dots -->
+        <g>
+          <circle cx="140" cy="120" r="5" fill="#d4a946"/>
+          <circle cx="240" cy="100" r="5" fill="#d4a946"/>
+          <circle cx="280" cy="180" r="5" fill="#d4a946"/>
+          <circle cx="120" cy="220" r="5" fill="#d4a946"/>
+          <circle cx="200" cy="280" r="5" fill="#d4a946"/>
+          <circle cx="160" cy="180" r="8" fill="#c84b31" stroke="#faf6ed" stroke-width="2"/>
+          <text x="160" y="172" text-anchor="middle" fill="#faf6ed" font-size="9" font-family="serif" font-weight="700">ՀՀ</text>
+        </g>
+        <!-- connection lines from armenia -->
+        <g stroke="#d4a946" stroke-width="1.5" fill="none" opacity="0.6">
+          <path d="M160 180 Q150 150 140 120"/>
+          <path d="M160 180 Q200 130 240 100"/>
+          <path d="M160 180 Q220 180 280 180"/>
+          <path d="M160 180 Q140 200 120 220"/>
+          <path d="M160 180 Q180 230 200 280"/>
+        </g>
+        <!-- pulses -->
+        <circle cx="160" cy="180" r="15" fill="none" stroke="#c84b31" stroke-width="1.5" opacity="0.6">
+          <animate attributeName="r" from="8" to="30" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" from="0.8" to="0" dur="2s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+      <div class="float-card fc-1">
+        <strong>40+</strong>
+        <span>երկիր</span>
+      </div>
+      <div class="float-card fc-2">
+        <strong>1M+</strong>
+        <span>ուսուցիչ Եվրոպայում</span>
+      </div>
+      <div class="float-card fc-3">
+        <strong>հայ</strong>
+        <span>դպրոցներ ակտիվ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND PARTNERS STRIP -->
+<section class="brand-strip">
+  <div class="brand-strip-inner">
+    <div class="brand-strip-label">Պաշտոնական գործընկերներ և հովանավորներ</div>
+    <div class="brand-logos">
+      <!-- eTwinning logo -->
+      <div class="brand-logo">
+        <svg viewBox="0 0 140 60" xmlns="http://www.w3.org/2000/svg" aria-label="eTwinning">
+          <!-- Figure with stars (compact) -->
+          <g transform="translate(2 8)">
+            <!-- Sparkles -->
+            <path d="M8 6 L9 8.5 L11.5 9.5 L9 10.5 L8 13 L7 10.5 L4.5 9.5 L7 8.5 Z" fill="#F18A2F"/>
+            <path d="M36 4 L37 6 L39 7 L37 8 L36 10 L35 8 L33 7 L35 6 Z" fill="#F18A2F"/>
+            <path d="M38 30 L39 32 L41 33 L39 34 L38 36 L37 34 L35 33 L37 32 Z" fill="#F5DC5C"/>
+            <!-- Person -->
+            <circle cx="22" cy="14" r="4" fill="#1B1F4A"/>
+            <path d="M22 18 C17 18 14 21 14 26 L14 38 L17 38 L17 32 L19 32 L19 42 L25 42 L25 32 L27 32 L27 38 L30 38 L30 26 C30 21 27 18 22 18 Z" fill="#1B1F4A"/>
+            <path d="M14 26 C12.5 22.5 11 18 11 14" stroke="#1B1F4A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M30 26 C31.5 22.5 33 18 33 14" stroke="#1B1F4A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          </g>
+          <!-- "eTwinning" wordmark -->
+          <text x="50" y="35" font-family="Noto Sans Armenian, sans-serif" font-size="20" font-weight="700" fill="#1B1F4A">eTwinning</text>
+        </svg>
+      </div>
+
+      <!-- EU Co-funded badge -->
+      <div class="brand-logo">
+        <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-label="Co-funded by the European Union">
+          <rect x="2" y="8" width="60" height="44" fill="#003399"/>
+          <!-- 12 stars -->
+          <g fill="#FFCC00" transform="translate(32 30)">
+            <g transform="translate(0 -13)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(6.5 -11.3)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(11.3 -6.5)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(13 0)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(11.3 6.5)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(6.5 11.3)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(0 13)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(-6.5 11.3)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(-11.3 6.5)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(-13 0)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(-11.3 -6.5)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(-6.5 -11.3)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+          </g>
+          <text x="72" y="27" font-family="Noto Sans Armenian, sans-serif" font-size="11" font-weight="700" fill="#1B1F4A">Համաֆինանսավորվում է</text>
+          <text x="72" y="41" font-family="Noto Sans Armenian, sans-serif" font-size="11" font-weight="700" fill="#1B1F4A">Եվրոպական միության կողմից</text>
+        </svg>
+      </div>
+
+      <!-- Erasmus+ logo -->
+      <div class="brand-logo">
+        <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-label="Erasmus+">
+          <text x="10" y="32" font-family="Noto Sans Armenian, sans-serif" font-size="24" font-weight="700" fill="#1B1F4A">Erasmus</text>
+          <text x="125" y="32" font-family="Noto Sans Armenian, sans-serif" font-size="26" font-weight="700" fill="#F18A2F">+</text>
+          <text x="10" y="48" font-family="Noto Sans Armenian, sans-serif" font-size="9" fill="#4A4D70" letter-spacing="0.5">Enriching lives, opening minds.</text>
+        </svg>
+      </div>
+
+      <!-- European Commission -->
+      <div class="brand-logo">
+        <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-label="European Commission">
+          <!-- Stylized EU Commission flag wave -->
+          <g transform="translate(8 14)">
+            <rect width="36" height="26" fill="#003399"/>
+            <g fill="#FFCC00" transform="translate(18 13)">
+              <circle cx="0" cy="-7" r="1.2"/>
+              <circle cx="5" cy="-5" r="1.2"/>
+              <circle cx="7" cy="0" r="1.2"/>
+              <circle cx="5" cy="5" r="1.2"/>
+              <circle cx="0" cy="7" r="1.2"/>
+              <circle cx="-5" cy="5" r="1.2"/>
+              <circle cx="-7" cy="0" r="1.2"/>
+              <circle cx="-5" cy="-5" r="1.2"/>
+            </g>
+            <!-- "Wave" lines representing European Commission identity -->
+            <path d="M0 0 Q 9 4 18 0 T 36 0" stroke="#1B1F4A" stroke-width="0.5" fill="none" opacity="0.3"/>
+            <path d="M0 26 Q 9 22 18 26 T 36 26" stroke="#1B1F4A" stroke-width="0.5" fill="none" opacity="0.3"/>
+          </g>
+          <text x="54" y="28" font-family="Noto Sans Armenian, sans-serif" font-size="11" font-weight="600" fill="#1B1F4A">Եվրոպական</text>
+          <text x="54" y="42" font-family="Noto Sans Armenian, sans-serif" font-size="11" font-weight="600" fill="#1B1F4A">հանձնաժողով</text>
+        </svg>
+      </div>
+
+      <!-- ԿՏԱԿ / National Center -->
+      <div class="brand-logo">
+        <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-label="ԿՏԱԿ">
+          <!-- Round emblem -->
+          <g transform="translate(28 30)">
+            <circle cx="0" cy="0" r="20" fill="none" stroke="#1B1F4A" stroke-width="1.5"/>
+            <circle cx="0" cy="0" r="14" fill="none" stroke="#F18A2F" stroke-width="1"/>
+            <!-- Book inside -->
+            <path d="M-8 -4 L0 -6 L8 -4 L8 6 L0 4 L-8 6 Z" fill="none" stroke="#1B1F4A" stroke-width="1.2" stroke-linejoin="round"/>
+            <path d="M0 -6 L0 4" stroke="#1B1F4A" stroke-width="1"/>
+            <circle cx="0" cy="-20" r="0.8" fill="#F18A2F"/>
+            <circle cx="0" cy="20" r="0.8" fill="#F18A2F"/>
+            <circle cx="-20" cy="0" r="0.8" fill="#F18A2F"/>
+            <circle cx="20" cy="0" r="0.8" fill="#F18A2F"/>
+          </g>
+          <text x="58" y="26" font-family="Noto Serif Armenian, serif" font-size="14" font-weight="700" fill="#1B1F4A">ԿՏԱԿ</text>
+          <text x="58" y="40" font-family="Noto Sans Armenian, sans-serif" font-size="8" fill="#4A4D70">Կրթական տեխնոլոգիաների</text>
+          <text x="58" y="50" font-family="Noto Sans Armenian, sans-serif" font-size="8" fill="#4A4D70">ազգային կենտրոն</text>
+        </svg>
+      </div>
+
+      <!-- ԿԳՄՍ Ministry -->
+      <div class="brand-logo">
+        <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-label="ՀՀ ԿԳՄՍ նախարարություն">
+          <!-- Armenian coat of arms inspired emblem (simplified) -->
+          <g transform="translate(28 30)">
+            <path d="M0 -16 L-12 -10 L-12 8 C-12 14 0 18 0 18 C0 18 12 14 12 8 L12 -10 Z"
+                  fill="none" stroke="#1B1F4A" stroke-width="1.5"/>
+            <!-- Eagle/lion silhouette simplified as a cross/star pattern -->
+            <path d="M0 -8 L0 8 M-6 0 L6 0" stroke="#F18A2F" stroke-width="1.5"/>
+            <circle cx="0" cy="0" r="3" fill="none" stroke="#F18A2F" stroke-width="1"/>
+          </g>
+          <text x="58" y="22" font-family="Noto Serif Armenian, serif" font-size="11" font-weight="700" fill="#1B1F4A">ՀՀ ԿԳՄՍ</text>
+          <text x="58" y="36" font-family="Noto Sans Armenian, sans-serif" font-size="9" fill="#4A4D70">նախարարություն</text>
+          <text x="58" y="48" font-family="Noto Sans Armenian, sans-serif" font-size="7" fill="#4A4D70" letter-spacing="0.5">Հայաստանի Հանրապետություն</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats-bar" style="padding: 3rem 2rem;">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-number">320<span class="plus">+</span></div>
+      <div class="stat-label">Գրանցված դպրոցներ</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-number">1 850<span class="plus">+</span></div>
+      <div class="stat-label">Ակտիվ ուսուցիչ</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-number">240<span class="plus">+</span></div>
+      <div class="stat-label">Իրականացված նախագիծ</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-number">42</div>
+      <div class="stat-label">Գործընկեր երկիր</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Մեր մասին</div>
+      <h2 class="section-title">Ի՞նչ է eTwinning Հայաստանը</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          <strong>eTwinning Հայաստանը</strong> եվրոպական խոշորագույն կրթական ցանցի՝ eTwinning-ի ազգային ներկայացուցչությունն է, որը գործում է ՀՀ Կրթության, գիտության, մշակույթի և սպորտի նախարարության աջակցությամբ՝ Erasmus+ ծրագրի շրջանակում։
+        </p>
+        <p>
+          Մենք օգնում ենք հայ ուսուցիչներին և աշակերտներին հաստատել կրթական կամուրջներ Եվրոպայի դպրոցների հետ՝ առցանց համատեղ նախագծերի, թվային հարթակների և մասնագիտական զարգացման ծրագրերի միջոցով։
+        </p>
+        <p>
+          <strong>Մեր նպատակն է</strong>՝ հայկական դպրոցը դարձնել եվրոպական կրթական տարածքի լիարժեք մասնակից, որտեղ յուրաքանչյուր ուսուցիչ ունի հնարավորություն բացահայտելու նոր մեթոդներ, իսկ յուրաքանչյուր աշակերտ՝ ձեռք բերելու XXI դարի հմտություններ։
+        </p>
+      </div>
+      <div class="about-visual reveal">
+        <div class="img-block img-1">
+          <svg viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="35" r="15" stroke="#d4a946" stroke-width="2"/>
+            <path d="M25 80 Q50 55 75 80" stroke="#d4a946" stroke-width="2"/>
+            <path d="M30 50 L70 50" stroke="#d4a946" stroke-width="1.5" stroke-dasharray="3 3"/>
+          </svg>
+        </div>
+        <div class="img-block img-2">
+          <svg viewBox="0 0 100 100" fill="none">
+            <rect x="20" y="25" width="60" height="45" rx="2" stroke="#0a2540" stroke-width="2"/>
+            <line x1="20" y1="35" x2="80" y2="35" stroke="#0a2540" stroke-width="2"/>
+            <circle cx="27" cy="30" r="1.5" fill="#0a2540"/>
+            <circle cx="33" cy="30" r="1.5" fill="#0a2540"/>
+            <path d="M30 50 L45 60 L70 45" stroke="#0a2540" stroke-width="2" fill="none"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE OFFER -->
+<section class="offer" id="offer">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label" style="color: var(--gold-soft);">Հնարավորություններ</div>
+      <h2 class="section-title">Ի՞նչ ենք առաջարկում</h2>
+      <p class="section-intro">
+        eTwinning Հայաստանը ապահովում է գործիքներ, համայնք և վերապատրաստումներ, որոնք անհրաժեշտ են ուսուցչին՝ եվրոպական ստանդարտներով դասավանդելու համար։
+      </p>
+    </div>
+    <div class="offer-grid">
+      <div class="offer-card reveal">
+        <div class="offer-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <h3>Միջազգային նախագծեր</h3>
+        <p>Իրականացրեք առցանց համատեղ նախագծեր Եվրոպայի դպրոցների հետ ցանկացած առարկայի շրջանակում՝ լեզու, արվեստ, գիտություն, ՏՀՏ։</p>
+        <a href="#" class="learn">Դիտել նախագծերը →</a>
+      </div>
+      <div class="offer-card reveal">
+        <div class="offer-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <h3>Մասնագիտական զարգացում</h3>
+        <p>Անվճար առցանց դասընթացներ, սեմինարներ և վեբինարներ՝ ղեկավարված Եվրոպայի լավագույն կրթական մասնագետների կողմից։</p>
+        <a href="#" class="learn">Տեսնել դասընթացները →</a>
+      </div>
+      <div class="offer-card reveal">
+        <div class="offer-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3>Ուսուցիչների ցանց</h3>
+        <p>Միացեք ավելի քան 1 միլիոն եվրոպացի ուսուցիչների համայնքին՝ կիսվեք փորձով, գտեք համախոհներ, համատեղ նախագծեր ստեղծեք։</p>
+        <a href="#" class="learn">Գտնել գործընկեր →</a>
+      </div>
+      <div class="offer-card reveal">
+        <div class="offer-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 15l-2 5l9-9l-9-9l2 5l-7 4l7 4z"/>
+          </svg>
+        </div>
+        <h3>Որակի պիտակներ</h3>
+        <p>Ձեռք բերեք Ազգային և Եվրոպական որակի պիտակներ՝ Ձեր նախագծերի համար, որոնք ճանաչվում են ողջ Եվրոպայում։</p>
+        <a href="#" class="learn">Իմանալ պայմանները →</a>
+      </div>
+      <div class="offer-card reveal">
+        <div class="offer-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+        </div>
+        <h3>Միջոցառումներ</h3>
+        <p>Կոնֆերանսներ, ամառային ճամբարներ, ուսուցիչների շփման օրեր Հայաստանում և արտերկրում՝ ճանապարհածախսը հաճախ ծածկվում է։</p>
+        <a href="#" class="learn">Օրացույց →</a>
+      </div>
+      <div class="offer-card reveal">
+        <div class="offer-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </div>
+        <h3>Մեթոդական աջակցություն</h3>
+        <p>Մեր թիմը՝ Ազգային աջակցության կենտրոնը, օգնում է Ձեզ յուրաքանչյուր քայլում՝ գաղափարից մինչև նախագծի ավարտ։</p>
+        <a href="#" class="learn">Կապ մեզ հետ →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-inner">
+    <div class="reveal" style="text-align: center;">
+      <div class="section-label" style="padding-left: 0;">Ընդամենը չորս քայլ</div>
+      <h2 class="section-title" style="margin: 1rem auto 1.5rem;">Ինչպե՞ս միանալ eTwinning-ին</h2>
+      <p class="section-intro" style="margin: 0 auto;">
+        Գրանցումն անվճար է և բաց բոլոր ուսուցիչների, դպրոցի ղեկավարների ու կրթական մասնագետների համար։
+      </p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h4>Գրանցում</h4>
+        <p>Ստեղծեք անվճար հաշիվ EU Login հարթակում և լրացրեք Ձեր դպրոցի տվյալները։</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h4>Բացահայտում</h4>
+        <p>Փնտրեք գործընկեր ուսուցիչներ, դիտեք առկա նախագծերը և ձևավորեք գաղափարներ։</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h4>Համագործակցություն</h4>
+        <p>Սկսեք համատեղ նախագիծ TwinSpace-ում՝ ապահով և մասնավոր թվային տարածքում։</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <h4>Ճանաչում</h4>
+        <p>Ձեռք բերեք որակի պիտակ, ստացեք հավաստագիր և կիսվեք արդյունքներով։</p>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 4rem;">
+      <a href="#join" class="btn">Սկսել հիմա →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-inner">
+    <div class="projects-header">
+      <div class="reveal">
+        <div class="section-label">Փորձիր ինքդ</div>
+        <h2 class="section-title">Ոգեշնչող նախագծեր</h2>
+      </div>
+      <a href="#" class="btn btn-outline reveal">Բոլոր նախագծերը →</a>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-img p1">
+          <span class="tag">Պատմություն</span>
+          <svg viewBox="0 0 100 100" fill="#d4a946">
+            <path d="M50 10 L70 30 L70 70 L50 90 L30 70 L30 30 Z" stroke="#d4a946" stroke-width="2" fill="none"/>
+            <circle cx="50" cy="50" r="15" stroke="#d4a946" stroke-width="2" fill="none"/>
+          </svg>
+        </div>
+        <div class="project-content">
+          <div class="project-meta">
+            <span>9-12 դասարան</span>
+            <span>•</span>
+            <span>6 ամիս</span>
+          </div>
+          <h3>Մետաքսի ճանապարհ. Արևելք-Արևմուտք</h3>
+          <p>Հայ, իտալացի և չինացի աշակերտները միասին հետազոտում են պատմական առևտրային ուղիների ազդեցությունը մշակույթների վրա։</p>
+          <div class="meta-bot">
+            <span class="countries"><strong>3</strong> երկիր • <strong>5</strong> դպրոց</span>
+            <span style="color: var(--gold-deep); font-weight: 600;">Ընթացիկ</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-img p2">
+          <span class="tag">Բնապահպանություն</span>
+          <svg viewBox="0 0 100 100" fill="none" stroke="#faf6ed" stroke-width="2">
+            <path d="M50 20 Q30 30 30 50 Q30 70 50 80 Q70 70 70 50 Q70 30 50 20 Z"/>
+            <path d="M50 30 L50 80 M30 50 L70 50"/>
+          </svg>
+        </div>
+        <div class="project-content">
+          <div class="project-meta">
+            <span>5-8 դասարան</span>
+            <span>•</span>
+            <span>4 ամիս</span>
+          </div>
+          <h3>Մեր լճի պատմությունը</h3>
+          <p>Սևանա լճի, Բալատոնի և Բոդեն լճի աշակերտները կիսվում են բնապահպանական մարտահրավերներով և լուծումներով։</p>
+          <div class="meta-bot">
+            <span class="countries"><strong>3</strong> երկիր • <strong>4</strong> դպրոց</span>
+            <span style="color: #6b8e6f; font-weight: 600;">★ Որակի պիտակ</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-img p3">
+          <span class="tag">Արվեստ</span>
+          <svg viewBox="0 0 100 100" fill="none" stroke="#faf6ed" stroke-width="2">
+            <circle cx="35" cy="35" r="12"/>
+            <circle cx="65" cy="35" r="12"/>
+            <circle cx="50" cy="65" r="12"/>
+          </svg>
+        </div>
+        <div class="project-content">
+          <div class="project-meta">
+            <span>1-4 դասարան</span>
+            <span>•</span>
+            <span>3 ամիս</span>
+          </div>
+          <h3>Իմ տառերը՝ քո տառերը</h3>
+          <p>Փոքրիկները բացահայտում են հայերեն, հունարեն և վրացական այբուբենների գեղեցկությունը՝ ստեղծելով համատեղ թվային գիրք։</p>
+          <div class="meta-bot">
+            <span class="countries"><strong>3</strong> երկիր • <strong>6</strong> դպրոց</span>
+            <span style="color: var(--gold-deep); font-weight: 600;">★★ Եվրոպական</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <div class="reveal">
+    <p class="testimonial-quote">
+      eTwinning-ը ինձ տվեց մի բան, որը դասագիրքը երբեք չէր կարող՝ իմ աշակերտները ֆինլանդիայի և Իսպանիայի իրենց հասակակիցների հետ բարեկամացան, սովորեցին լեզու ոչ թե ստիպողաբար, այլ նրա համար, որ կարողանան խոսել։
+    </p>
+    <div class="testimonial-author">
+      <strong>Անահիտ Գասպարյան</strong>
+      <span>Անգլերենի ուսուցիչ, Երևան N 23 ավագ դպրոց</span>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news" id="news">
+  <div class="section-inner">
+    <div class="projects-header">
+      <div class="reveal">
+        <div class="section-label">Թարմ նորություններ</div>
+        <h2 class="section-title">Ի՞նչ է կատարվում</h2>
+      </div>
+      <a href="#" class="btn btn-outline reveal">Բոլոր նորությունները →</a>
+    </div>
+    <div class="news-grid">
+      <div class="news-main reveal">
+        <div class="news-date">2026 թվ. մարտի 15</div>
+        <h3>Երևանում մեկնարկեց eTwinning ուսուցիչների ամենամյա ֆորումը</h3>
+        <p>
+          Հայաստանի 14 մարզից ավելի քան 180 ուսուցիչներ հավաքվել են Երևանում՝ քննարկելու համատեղ նախագծերի լավագույն փորձը, ստեղծելու նոր գործընկերություններ Եվրոպայի դպրոցների հետ և մասնակցելու 8 թեմատիկ սեմինարների։
+        </p>
+        <a href="#" class="btn btn-gold" style="padding: 0.7rem 1.5rem;">Կարդալ ամբողջական →</a>
+      </div>
+      <div class="news-side">
+        <div class="news-item reveal">
+          <div class="news-date">մարտի 10</div>
+          <h4>Բացված է գարնանային վերապատրաստման գրանցումը</h4>
+        </div>
+        <div class="news-item reveal">
+          <div class="news-date">մարտի 5</div>
+          <h4>5 հայ դպրոց ստացավ Եվրոպական որակի պիտակ</h4>
+        </div>
+        <div class="news-item reveal">
+          <div class="news-date">փետրվարի 28</div>
+          <h4>Նոր նախագիծ՝ «Հին քաղաքների ձայնը»՝ 7 երկրի մասնակցությամբ</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORTER / ԿՏԱԿ -->
+<section class="supporter" id="ktak">
+  <div class="supporter-inner">
+    <div class="supporter-grid">
+      <div class="supporter-content reveal">
+        <div class="section-label">Աջակցող կազմակերպություն</div>
+        <h2 class="section-title">
+          Իթվինինգ Հայաստանի <span class="gold">պաշտոնական</span> գործընկեր գործակալությունը
+        </h2>
+        <p>
+          Հայաստանում Իթվինինգ ծրագրի աշխատանքները համակարգում է ՀՀ Կրթության, գիտության, մշակույթի և սպորտի նախարարության «Կրթական տեխնոլոգիաների ազգային կենտրոն» ՊՈԱԿ-ը, որը հանդիսանում է Հայաստանի eTwinning ծրագրի Աջակցող գործընկեր գործակալությունը։
+        </p>
+
+        <div class="supporter-hierarchy">
+          <div class="hierarchy-item">
+            <div class="hierarchy-icon">01</div>
+            <div><strong>ՀՀ ԿԳՄՍ նախարարություն</strong> — պետական հովանավոր</div>
+          </div>
+          <div class="hierarchy-item">
+            <div class="hierarchy-icon">02</div>
+            <div><strong>«ԿՏԱԿ» ՊՈԱԿ</strong> — ազգային համակարգող</div>
+          </div>
+          <div class="hierarchy-item">
+            <div class="hierarchy-icon">03</div>
+            <div><strong>Իթվինինգ Հայաստան</strong> — դպրոցների ցանց</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="supporter-card reveal">
+        <span class="card-corner tl"></span>
+        <span class="card-corner tr"></span>
+        <span class="card-corner bl"></span>
+        <span class="card-corner br"></span>
+
+        <div class="card-emblem">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <!-- Outer ornamental ring -->
+            <circle cx="40" cy="40" r="38" fill="none" stroke="#d4a946" stroke-width="0.5" opacity="0.5"/>
+            <circle cx="40" cy="40" r="32" fill="none" stroke="#d4a946" stroke-width="1"/>
+            <!-- Inner book / education symbol -->
+            <path d="M22 30 L40 26 L58 30 L58 52 L40 48 L22 52 Z"
+                  fill="none" stroke="#e8c876" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M40 26 L40 48" stroke="#e8c876" stroke-width="1"/>
+            <!-- Decorative dots around the ring -->
+            <circle cx="40" cy="8" r="1.5" fill="#d4a946"/>
+            <circle cx="40" cy="72" r="1.5" fill="#d4a946"/>
+            <circle cx="8" cy="40" r="1.5" fill="#d4a946"/>
+            <circle cx="72" cy="40" r="1.5" fill="#d4a946"/>
+            <!-- Connecting lines -->
+            <path d="M40 14 L40 22 M40 58 L40 66 M14 40 L22 40 M58 40 L66 40"
+                  stroke="#d4a946" stroke-width="0.8" opacity="0.7"/>
+          </svg>
+        </div>
+
+        <div class="card-acronym">ԿՏԱԿ</div>
+
+        <div class="card-divider"></div>
+
+        <div class="card-fullname-label">Ամբողջական անվանումը</div>
+        <div class="card-fullname">«Կրթական տեխնոլոգիաների ազգային կենտրոն» ՊՈԱԿ</div>
+
+        <div class="card-role">
+          Հայաստանի eTwinning ծրագրի Աջակցող գործընկեր գործակալություն
+        </div>
+
+        <div class="card-parent">
+          Գործում է հովանու ներքո՝
+          <strong>ՀՀ ԿԳՄՍ նախարարության</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="faq-header reveal">
+      <div class="section-label">Կրթական ուղեցույց</div>
+      <h2 class="section-title">Հաճախ տրվող հարցեր</h2>
+      <p style="color: var(--ink-soft); max-width: 600px; margin: 1.25rem auto 0; font-size: 1.05rem;">
+        Ամենահաճախ տրվող հարցերի պատասխանները Իթվինինգ ծրագրի, գրանցման ընթացակարգի և ճանաչման մեխանիզմների մասին։
+      </p>
+    </div>
+
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="q-num">01</span>
+          <span class="q-text">Ի՞նչ է Իթվինինգը</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Իթվինինգը Եվրոպայի և Եվրոպայի անմիջական հարևանությամբ գտնվող երկրների դպրոցների համար նախատեսված կրթական համայնք է, որտեղ այդ համայնքի ներկայացուցիչները կարող են հաղորդակցվել, համագործակցել, ստեղծել նախագծեր և կիսվել փորձով։</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="q-num">02</span>
+          <span class="q-text">Ովքե՞ր կարող են միանալ Իթվինինգին և ինչպե՞ս</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Իթվինինգին կարող են միանալ ՀՀ դպրոցների բոլոր ուսուցիչները՝ <strong>անկախ առարկայական ուղղվածությունից</strong>, տնօրենները, ՏՀՏ համակարգողները և դպրոցի այլ մոտիվացված անձիք, ինչպես նաև մասնագիտական և մանկավարժական կրթություն իրականացնող հաստատությունները։</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="q-num">03</span>
+          <span class="q-text">Հայաստանում ո՞վ է համակարգում Իթվինինգի աշխատանքները</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Հայաստանում Իթվինինգ ծրագրի աշխատանքները համակարգում է ԿԳՄՍՆ <strong>«Կրթական տեխնոլոգիաների ազգային կենտրոն» ՊՈԱԿ-ը</strong>, որը հանդիսանում է Հայաստանի eTwinning ծրագրի Աջակցող գործընկեր գործակալությունը։</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="q-num">04</span>
+          <span class="q-text">Ինչպե՞ս գրանցվել Իթվինինգում</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Գրանցվելու համար այցելեք Եվրոպական դպրոցական կրթական հարթակ՝ <a href="https://ecas.ec.europa.eu" target="_blank" rel="noopener">ecas.ec.europa.eu</a>, ստեղծեք անհատական հաշիվ և միացեք Իթվինինգին։</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="q-num">05</span>
+          <span class="q-text">Ո՞վ է Իթվինինգի դեսպանը</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Իթվինինգի դեսպաններն ընտրվում են առավել փորձառու ուսուցիչներից, ովքեր ծրագրում ունեն <strong>առնվազն 2 տարվա ակտիվ փորձ</strong> և Որակի Եվրոպական հավաստագրեր։ Յուրաքանչյուր դեսպան պատասխանատու է իր տարածաշրջանի կամ ուղղվածության ուսուցիչներին աջակցություն տրամադրելու համար։</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="q-num">06</span>
+          <span class="q-text">Ի՞նչ է TwinSpace-ը</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>TwinSpace-ը <strong>ապահով առցանց տիրույթ է</strong>, որը ստեղծվում է յուրաքանչյուր eTwinning նախագծի համար և ծառայում է որպես համագործակցային թվային միջավայր ուսուցիչների և աշակերտների հաղորդակցության, նյութերի փոխանակման, համատեղ աշխատանքի և արդյունքների ներկայացման համար։</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="q-num">07</span>
+          <span class="q-text">Որո՞նք են Իթվինինգ ծրագրի ճանաչման մեխանիզմները</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>eTwinning ծրագրում ճանաչման մեխանիզմները <strong>բազմաշերտ են</strong> և նպատակ ունեն գնահատելու թե՛ ուսուցիչների, թե՛ դպրոցների և թե նախագծերի որակը, նորարարությունն ու համագործակցությունը։ Դրանք միաժամանակ խրախուսում են փորձի փոխանակումը և լավագույն փորձերի տարածումը Եվրոպայում։</p>
+            <p>Հիմնական ճանաչման ձևերն են՝</p>
+            <ul>
+              <li>Իթվինինգի Որակի ազգային հավաստագիր</li>
+              <li>Իթվինինգի Որակի եվրոպական հավաստագիր</li>
+              <li>eTwinning-ի եվրոպական մրցանակներ</li>
+              <li>«Իթվինինգ դպրոց» որակավորում</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="q-num">08</span>
+          <span class="q-text">Ի՞նչ են Իթվինինգի Որակի հավաստագրերը</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p><strong>Որակի ազգային հավաստագիր</strong> շնորհվում է այն ուսուցիչներին և աշակերտներին, ովքեր ներգրավված են եղել հաջողված eTwinning նախագծում։ Հաջողված նախագծերը պետք է համապատասխանեն հետևյալ չափանիշներին՝</p>
+            <ul>
+              <li>մանկավարժական նորարարություն</li>
+              <li>համագործակցություն գործընկերների հետ</li>
+              <li>ՏՀՏ արդյունավետ կիրառություն</li>
+              <li>ինտեգրում ուսումնական ծրագրում</li>
+              <li>արդյունքների ազդեցություն և փաստաթղթավորում</li>
+            </ul>
+            <p>Միայն եվրոպական նախագծերը (որոնց հիմնադիրները երկու տարբեր երկրներից են) կարող են ստանալ Ազգային որակի հավաստագիր։ Յուրաքանչյուր ուսուցիչ կարող է դիմել հավաստագրի <strong>առավելագույնը 4 նախագծի</strong> համար մեկ ուսումնական տարում։</p>
+            <p><strong>Որակի եվրոպական հավաստագիր</strong> շնորհվում է Եվրոպական հաջող համագործակցություն ցուցաբերած այն նախագծերին, որոնք արդեն ստացել են Ազգային որակի հավաստագիր առնվազն երկու երկրում և ունեն բարձր գնահատականներ։ Հավաստագիրը շնորհվում է տարին մեկ անգամ և պարտադիր նախապայման է եվրոպական eTwinning մրցանակներին մասնակցելու համար։</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="q-num">09</span>
+          <span class="q-text">Ի՞նչ են eTwinning-ի եվրոպական մրցանակները</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>eTwinning Եվրոպական մրցանակները <strong>ճանաչման ամենաբարձր աստիճանն են</strong>, որոնք շնորհվում են լավագույն նախագծերին՝ խրախուսելով նորարարական և համագործակցային ուսուցումը տարբեր երկրների դպրոցների միջև։ Մրցանակներն ունեն հինգ հիմնական տարիքային և կրթական կատեգորիաներ (ներառյալ նաև մասնագիտական և նախնական ուսուցիչների կրթությունը)։</p>
+            <p>Մրցանակին կարող են հավակնել միայն այն նախագծերը, որոնք նախ ստացել են Ազգային և ապա Եվրոպական որակի հավաստագրեր, այսինքն՝ անցել են <strong>բազմաստիճան գնահատման գործընթաց</strong>։ Հաղթողները ընտրվում են փորձագետ ժյուրիի կողմից։</p>
+            <p>Մրցանակները շնորհվում են տարին մեկ անգամ՝ eTwinning-ի <strong>տարեկան համաժողովի ընթացքում</strong>։</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="q-num">10</span>
+          <span class="q-text">Ի՞նչ է Իթվինինգ դպրոցը</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Իթվինինգ դպրոցները խթանում են Իթվինինգի արժեքներն ու ներդրումը։ Այս որակավորմանը կարող են հավակնել դպրոցները, որոնք՝</p>
+            <ul>
+              <li>գրանցված են եղել eTwinning-ում ավելի քան երկու տարի</li>
+              <li>ունեն առնվազն երեք ուսուցիչ, որոնք վերջին երկու տարիների ընթացքում միացել են eTwinning նախագծերին, մասնագիտական զարգացմանը կամ eTwinning-ի այլ միջոցառումներին</li>
+              <li>վերջին երկու տարվա ընթացքում դպրոցի առնվազն մեկ անդամի շնորհվել է Որակի Ազգային հավաստագիր՝ eTwinning նախագծի շրջանակներում</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-cta reveal">
+      <strong>Չգտա՞ք պատասխանը</strong>
+      <p>Գրեք մեզ՝ և մեր թիմը կպատասխանի 24 ժամվա ընթացքում։</p>
+      <a href="#contact" class="btn btn-gold" style="padding: 0.85rem 2rem;">Կապ հաստատել →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="join">
+  <div class="cta-inner">
+    <div class="reveal">
+      <h2>Պատրա՞ստ ես բերել <span class="gold">Եվրոպան</span> քո դասարան</h2>
+      <p>
+        Միացիր Հայաստանի 1 850+ ուսուցիչներին, ովքեր արդեն փոխում են իրենց դասարանի փորձը։ Գրանցումն անվճար է և տևում է ընդամենը 5 րոպե։
+      </p>
+      <div class="cta-btns">
+        <a href="#" class="btn btn-gold" style="padding: 1rem 2.5rem; font-size: 1rem;">Գրանցվել անվճար</a>
+        <a href="#contact" class="btn btn-outline" style="padding: 1rem 2.5rem; font-size: 1rem; border-color: var(--gold-soft); color: var(--gold-soft);">Կապ հաստատել</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-mark">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 18 L15.5 21 L18.5 22.5 L15.5 24 L14 27 L12.5 24 L9.5 22.5 L12.5 21 Z" fill="#F18A2F"/>
+              <path d="M50 14 L51 16 L53 17 L51 18 L50 20 L49 18 L47 17 L49 16 Z" fill="#F18A2F"/>
+              <path d="M52 32 L53 34 L55 35 L53 36 L52 38 L51 36 L49 35 L51 34 Z" fill="#F5DC5C"/>
+              <path d="M10 38 L11 40 L13 41 L11 42 L10 44 L9 42 L7 41 L9 40 Z" fill="#F5DC5C"/>
+              <circle cx="32" cy="22" r="6" fill="#FFFBF4"/>
+              <path d="M32 28 C26 28 22 32 22 38 L22 50 L26 50 L26 42 L28 42 L28 54 L36 54 L36 42 L38 42 L38 50 L42 50 L42 38 C42 32 38 28 32 28 Z" fill="#FFFBF4"/>
+              <path d="M22 38 C20 34 18 28 18 22" stroke="#FFFBF4" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              <path d="M42 38 C44 34 46 28 46 22" stroke="#FFFBF4" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              <path d="M18 22 L19 19 L22 18 L19 17 L18 14 L17 17 L14 18 L17 19 Z" fill="#F18A2F"/>
+              <path d="M46 22 L47 19 L50 18 L47 17 L46 14 L45 17 L42 18 L45 19 Z" fill="#F18A2F"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            eTwinning
+            <small>Հայաստան</small>
+          </div>
+        </a>
+        <p>
+          Ազգային աջակցության կենտրոնը գործում է ՀՀ ԿԳՄՍ նախարարության և Erasmus+ ազգային գրասենյակի աջակցությամբ։
+        </p>
+        <div class="footer-socials" style="margin-top: 1.5rem;">
+          <a href="#" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="Telegram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Համայնք</h5>
+        <ul>
+          <li><a href="#">Մեր մասին</a></li>
+          <li><a href="#">Թիմ</a></li>
+          <li><a href="#">Դեսպաններ</a></li>
+          <li><a href="#">Գործընկերներ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Ռեսուրսներ</h5>
+        <ul>
+          <li><a href="#">Ուղեցույց</a></li>
+          <li><a href="#">Հաճախակի հարցեր</a></li>
+          <li><a href="#">Վերապատրաստումներ</a></li>
+          <li><a href="#">Հաշվետվություններ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Կապ</h5>
+        <ul>
+          <li><a href="mailto:info@etwinning.am">info@etwinning.am</a></li>
+          <li><a href="tel:+37410000000">+374 10 000 000</a></li>
+          <li><a href="#">Մոսկովյան 13, Երևան</a></li>
+          <li><a href="#">Ընդունելության ժամեր</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- EU funding disclaimer (required for EU-funded programs) -->
+    <div class="eu-disclaimer">
+      <div class="eu-disclaimer-flag">
+        <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="40" fill="#003399"/>
+          <g fill="#FFCC00" transform="translate(30 20)">
+            <g transform="translate(0 -12)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(6 -10.4)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(10.4 -6)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(12 0)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(10.4 6)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(6 10.4)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(0 12)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(-6 10.4)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(-10.4 6)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(-12 0)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(-10.4 -6)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+            <g transform="translate(-6 -10.4)"><polygon points="0,-2.5 0.7,-0.8 2.4,-0.8 1,0.3 1.5,2 0,1 -1.5,2 -1,0.3 -2.4,-0.8 -0.7,-0.8"/></g>
+          </g>
+        </svg>
+      </div>
+      <div class="eu-disclaimer-text">
+        <strong>Համաֆինանսավորվում է Եվրոպական միության կողմից</strong>
+        <p>Սույն կայքի բովանդակությունն արտացոլում է հեղինակների տեսակետները։ Եվրոպական հանձնաժողովը պատասխանատվություն չի կրում այստեղ ներկայացված տեղեկատվության որևէ կիրառման համար։</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 eTwinning Հայաստան. Բոլոր իրավունքները պաշտպանված են։</div>
+      <div>
+        <a href="#">Գաղտնիության քաղաքականություն</a>  &nbsp;•&nbsp;  
+        <a href="#">Օգտվելու պայմաններ</a>  &nbsp;•&nbsp;  
+        <a href="#">Քուքիներ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Mobile menu close on link click
+  document.querySelectorAll('nav.primary a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('primaryNav').classList.remove('open');
+    });
+  });
+
+  // Animated counter for stats
+  const animateCount = (el, target) => {
+    const duration = 1800;
+    const start = performance.now();
+    const startVal = 0;
+    const numericTarget = parseInt(target.replace(/\D/g, ''));
+    const hasPlus = target.includes('+');
+    
+    const update = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(startVal + (numericTarget - startVal) * eased);
+      const formatted = current.toLocaleString('hy').replace(/,/g, ' ');
+      el.innerHTML = formatted + (hasPlus ? '<span class="plus">+</span>' : '');
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  };
+  
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.animated) {
+        entry.target.dataset.animated = 'true';
+        const numEl = entry.target.querySelector('.stat-number');
+        const original = numEl.innerText;
+        animateCount(numEl, original);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-item').forEach(el => statObserver.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      // Close all others
+      document.querySelectorAll('.faq-item.open').forEach(openItem => {
+        if (openItem !== item) openItem.classList.remove('open');
+      });
+      // Toggle this one
+      item.classList.toggle('open', !wasOpen);
+    });
+  });
+</script>
+</body>
+</html>
